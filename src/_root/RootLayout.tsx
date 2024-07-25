@@ -1,11 +1,12 @@
-import React from "react";
+import { Outlet, Navigate } from "react-router-dom";
 
 const RootLayout = () => {
+  const isAuthenticated = false;
+
   return (
-    <div>
-      <h1>Root Layout</h1>
-      {/* <Outlet /> This is where the nested route content will appear */}
-    </div>
+    <>
+      <div>{!isAuthenticated ? <Navigate to="/sign-up" /> : <Outlet />}</div>
+    </>
   );
 };
 

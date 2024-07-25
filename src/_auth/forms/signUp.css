@@ -1,0 +1,36 @@
+.container {
+  color: white;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.logo {
+  width: 40px;
+  height: 40px;
+}
+
+.signUpLabel {
+  position: relative;
+  right: 95px;
+}
+
+.signUpName {
+  position: relative;
+  right: 105px;
+}
+
+.signUpEmail {
+  position: relative;
+  right: 105px;
+}
+
+.signUpBtn {
+  margin: 20px;
+  background-color: #fec224 !important;
+  color: #1b5682 !important;
+}

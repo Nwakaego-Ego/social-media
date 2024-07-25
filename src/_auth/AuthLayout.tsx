@@ -1,4 +1,5 @@
 import { Outlet, Navigate } from "react-router-dom";
+import "./auth.css";
 
 const AuthLayout = () => {
   const isAuthenticated = false;
@@ -7,9 +8,12 @@ const AuthLayout = () => {
       {isAuthenticated ? (
         <Navigate to="/" />
       ) : (
-        <section>
-          <Outlet />
-        </section>
+        <div className="auth-container ">
+          <div className="image-container"></div>
+          <div className="signUpValidation">
+            <Outlet />
+          </div>
+        </div>
       )}
     </>
   );
