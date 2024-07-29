@@ -16,9 +16,10 @@ import {
   FormMessage,
 } from "../../@/components/ui/form";
 import { Input } from "../../@/components/ui/input";
+import { createUserAccount } from "../../@/lib/appwrite/app";
 
 const signInForm = () => {
-  const loading = true;
+  const loading = false;
 
   const form = useForm<z.infer<typeof signUpValidation>>({
     resolver: zodResolver(signUpValidation),
@@ -30,13 +31,10 @@ const signInForm = () => {
   });
 
   // 2. Define a submit handler.
-  function onSubmit(values: z.infer<typeof signUpValidation>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-    console.log(values);
+  async function onSubmit(values: z.infer<typeof signUpValidation>) {
+    const newUser = await createUserAccount(values);
+    console.log(newUser);
   }
-
-  console.log("Form");
 
   return (
     <>
@@ -92,7 +90,7 @@ const signInForm = () => {
                 </FormItem>
               )}
             />
-            <FormField
+            {/* <FormField
               control={form.control}
               name="password"
               render={({ field }) => (
@@ -102,6 +100,25 @@ const signInForm = () => {
                   </FormLabel>
                   <FormControl>
                     <Input type="password" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            /> */}
+            <FormField
+              control={form.control}
+              name="password"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="signUpLabel signUpPassword">
+                    Password
+                  </FormLabel>
+                  <FormControl>
+                    <Input
+                      type="password"
+                      className="yestext-black"
+                      {...field}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
